@@ -32,31 +32,43 @@ The thermal voltage is `VT = kB*T/q = 0.025692579 V`; define `a = n*VT = 0.03340
 
 Ideal one-diode current–voltage equation, with current in A and voltage in V:
 
-\[ I(V) = I_{ph} - I_0\left(e^{V/a}-1\right). \]
+$$
+I(V) = I_{ph} - I_0\left(e^{V/a}-1\right).
+$$
 
-Power in watts is \( P(V)=V I(V) \). To find an interior maximum, set the first derivative of power to zero. By the product rule:
+Power in watts is $P(V)=V I(V)$. To find an interior maximum, set the first derivative of power to zero. By the product rule:
 
-\[ \frac{dP}{dV} = I(V)+V\frac{dI}{dV}. \]
+$$
+\frac{dP}{dV} = I(V)+V\frac{dI}{dV}.
+$$
 
 Differentiate the current equation:
 
-\[ \frac{dI}{dV}=-\frac{I_0}{a}e^{V/a}. \]
+$$
+\frac{dI}{dV}=-\frac{I_0}{a}e^{V/a}.
+$$
 
 Substitution gives the scalar nonlinear residual, in amperes:
 
-\[ f(V)=I_{ph}+I_0-I_0e^{V/a}(1+V/a)=0. \]
+$$
+f(V)=I_{ph}+I_0-I_0e^{V/a}(1+V/a)=0.
+$$
 
 Its **analytical derivative** is:
 
-\[ f'(V)=-\frac{I_0}{a}e^{V/a}\left(2+\frac{V}{a}\right)\quad [\mathrm{A/V}]. \]
+$$
+f'(V)=-\frac{I_0}{a}e^{V/a}\left(2+\frac{V}{a}\right)\quad [\mathrm{A/V}].
+$$
 
-The derivative is negative for \(V \ge 0\), so the stationary point is a unique local power maximum in the physical interval \(0<V<V_{oc}\).
+The derivative is negative for $V \ge 0$, so the stationary point is a unique local power maximum in the physical interval $0<V<V_{oc}$.
 
 ## 4. Newton–Raphson method
 
 Start at **V0 = 0.7000000000 V** and iterate:
 
-\[ V_{j+1}=V_j-\frac{f(V_j)}{f'(V_j)}. \]
+$$
+V_{j+1}=V_j-\frac{f(V_j)}{f'(V_j)}.
+$$
 
 Stop only if **both** `|Vnew - Vold| < 1e-12 V` and `|f(Vnew)| < 1e-10 A` hold, with a maximum of 50 iterations. The code checks that every step remains in `[0, Voc]`.
 
@@ -78,8 +90,8 @@ Stop only if **both** `|Vnew - Vold| < 1e-12 V` and `|f(Vnew)| < 1e-10 A` hold, 
 | **Vmp** | **0.7188038973 V** |
 | **Imp** | **4.7779834876 A** |
 | **Pmp = Vmp × Imp** | **3.4344331522 W** |
-| Residual \(\lvert f(Vmp)\rvert\) | 4.44 × 10^-15 A |
-| Second derivative \(d^2P/dV^2\) at MPP | -156.346148 A/V |
+| Residual $\lvert f(Vmp)\rvert$ | 4.44 × 10^-15 A |
+| Second derivative $d^2P/dV^2$ at MPP | -156.346148 A/V |
 
 ### I–V and P–V curves
 
@@ -117,6 +129,6 @@ From the repository root:
 python code/numerical.py
 ```
 
-This generates [`numerical_results.json`](numerical_results.json), [`numerical_console_output.txt`](numerical_console_output.txt) (saved reference log in repository), the two plots, and the complete iteration table in the terminal. Source: [`code/numerical.py`](https://github.com/ulasutkuceylan/EEE213-Ulas-Utku-Ceylan-HW1/blob/main/code/numerical.py).
+Running the script generates `numerical_results.json`, `numerical_console_output.txt`, the two plots, and the complete iteration table in the terminal. The generated JSON and log files are local outputs unless they are also committed to the repository. Source: [`code/numerical.py`](https://github.com/ulasutkuceylan/EEE213-Ulas-Utku-Ceylan-HW1/blob/main/code/numerical.py).
 
 **Reading:** EEE213 Week 09 numerical-problem list (#4), EEE213 Week 11 numerical-page checklist; the ideal diode equation and SI constant definitions. Source parameter values are **stated assumptions**.
