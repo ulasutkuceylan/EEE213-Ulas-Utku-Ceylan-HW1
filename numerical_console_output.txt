@@ -1,0 +1,25 @@
+NUMERICAL PROBLEM #4: SOLAR-CELL MAXIMUM POWER POINT
+MODEL: ideal illuminated single diode, Rs=0 ohm, Rsh=infinity; constant T/irradiance
+PARAMETERS: Iph=5.00 A, I0=1.00e-10 A, n=1.30, T=298.15 K (stated assumptions)
+thermal_voltage kB*T/q = 0.025692579 V; a=n*VT = 0.033400353 V
+open_circuit_voltage Voc = 0.822827340 V
+NEWTON ITERATIONS:
+iter | voltage(V) | residual dP/dV (A) | f'(V) (A/V) | delta V (V)
+  0  | 0.7000000000 | +2.223650977e+00 | -8.690892859e+01 | +2.558599000e-02
+  1  | 0.7255859900 | -1.180927382e+00 | -1.931994119e+02 | -6.112479175e-03
+  2  | 0.7194735108 | -1.057931930e-01 | -1.596481826e+02 | -6.626645621e-04
+  3  | 0.7188108463 | -1.086560183e-03 | -1.563800625e+02 | -6.948201490e-06
+  4  | 0.7188038981 | -1.178138005e-07 | -1.563461517e+02 | -7.535446136e-10
+  5  | 0.7188038973 | -1.243449788e-14 | -1.563461480e+02 | -7.953184668e-17
+Vmp (Newton) = 0.7188038973 V
+Imp = 4.7779834876 A
+Pmp = 3.4344331522 W
+final_residual_abs = 4.440892099e-15 A
+curvature at MPP, d2P/dV2 = -156.34614804 A/V (negative: local maximum)
+INDEPENDENT golden-section (power-only) Vmp = 0.7188038995 V, Pmp = 3.4344331522 W
+INDEPENDENT dense grid Vmp = 0.7188055077 V, Pmp = 3.4344331520 W
+voltage agreement golden vs Newton = 2.162122148e-09 V
+voltage agreement grid vs Newton = 1.610443188e-06 V
+finite-difference derivative at 0.65 V: analytic = -1.818217129e+01 A/V; finite-difference = -1.818217129e+01 A/V; absolute difference = 3.549942562e-09 A/V
+endpoint check P(0)=0.000e+00 W, P(Voc)=-5.847e-15 W
+SOFTWARE Python 3.13.5, NumPy 2.3.5, Matplotlib 3.10.8

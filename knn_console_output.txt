@@ -1,0 +1,42 @@
+DATASET
+rows=9568, columns=5, duplicates=41, missing=0
+train_rows=7654, test_rows=1914; duplicates kept
+FEATURES: AT (°C), V (cm Hg), AP (mbar), RH (%); target: PE (MW)
+KNN PIPELINE: StandardScaler() -> KNeighborsRegressor()
+CV: 5-fold KFold(shuffle=True, random_state=0), training rows only
+BASELINE 5-FOLD CV MAE: 14.877000 +/- 0.263190 MW
+4-FEATURE LINEAR 5-FOLD CV MAE: 3.622417 +/- 0.085613 MW
+GRID SEARCH:
+  k= 1: CV MAE=2.9926 MW ± 0.0724
+  k= 3: CV MAE=2.7631 MW ± 0.0703
+  k= 5: CV MAE=2.8163 MW ± 0.0774
+  k=10: CV MAE=2.9170 MW ± 0.0451
+  k=20: CV MAE=3.0803 MW ± 0.0272
+BEST k: 3
+BEST CV MAE: 2.763050 MW
+HELD-OUT TEST ERRORS (MW):
+  Baseline (training mean): 14.723152
+  Linear regression, AT only: 4.333265
+  Linear regression, V only: 6.488218
+  Linear regression, all four: 3.659393
+  k-NN, all four: 2.743109
+k-NN test RMSE: 3.984315 MW
+FIRST TEST ROW: CSV line 7656, AT=6.45, V=35.77, AP=1018.86, RH=67.84, true_PE=483.12, knn_pred=484.343333, absolute_error=1.223333
+PERMUTATION IMPORTANCE (increase in held-out MAE, 10 shuffles):
+  AT: 10.1668 ± 0.1863 MW
+  V: 4.1353 ± 0.0926 MW
+  AP: 1.5206 ± 0.0575 MW
+  RH: 1.1554 ± 0.0505 MW
+FEATURE ABLATION (k=3; 5-fold TRAINING-ONLY CV):
+  removed=none: CV MAE=2.763050 +/- 0.078587 MW
+  removed=AT: CV MAE=4.774229 +/- 0.075052 MW
+  removed=V: CV MAE=3.420351 +/- 0.064848 MW
+  removed=AP: CV MAE=3.237802 +/- 0.029865 MW
+  removed=RH: CV MAE=2.893978 +/- 0.059314 MW
+CV LEARNING CURVE:
+  n=612: train_MAE=2.6019, validation_MAE=3.8473 MW
+  n=1530: train_MAE=2.3490, validation_MAE=3.4131 MW
+  n=3061: train_MAE=2.0859, validation_MAE=3.1117 MW
+  n=4592: train_MAE=1.9639, validation_MAE=2.9096 MW
+  n=6123: train_MAE=1.8829, validation_MAE=2.7631 MW
+SOFTWARE: Python 3.13.5; NumPy 2.3.5; pandas 2.2.3; scikit-learn 1.8.0

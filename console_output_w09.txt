@@ -1,0 +1,17 @@
+Rows: 9568; columns: 5
+Missing cells: 0; exact duplicate rows: 41
+AT range: 1.81 to 37.11 °C
+V range: 25.36 to 81.56 cm Hg
+AP range: 992.89 to 1033.30 mbar
+RH range: 25.56 to 100.16 %
+PE range: 420.26 to 495.76 MW
+AT mean/median/sample std: 19.65 / 20.34 / 7.45
+PE mean/median/sample std: 454.37 / 451.55 / 17.07
+Correlations with PE: AT=-0.948, V=-0.870, AP=+0.518, RH=+0.390
+Training rows: 7654; test rows: 1914
+Distinct test rows that match training rows: 16
+Baseline training mean: 454.440184 MW; test MAE: 14.723152 MW
+AT line: slope=-2.174975, intercept=497.131349, test MAE=4.333265 MW
+V line: slope=-1.167711, intercept=517.776831, test MAE=6.488218 MW
+First test row: CSV line 7656; V=35.77 cm Hg; predicted PE=476.007821 MW; true PE=483.12 MW; absolute error=7.112179 MW
+Software: Python 3.13.5, NumPy 2.3.5, pandas 2.2.3, scikit-learn 1.8.0
